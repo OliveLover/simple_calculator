@@ -1,26 +1,16 @@
-import calculator.*;
-
-import java.util.Scanner;
+import calculator.CalculatorApp;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
+        boolean calculatedEnded = false;
+        //구현 2
 
-        Calculator calculator  = new Calculator();
-
-        int firstNumber = in.nextInt();
-        String operator = in.next();
-        int secondNumber = in.nextInt();
-
-        switch (operator) {
-            case "+" -> calculator.setOperation(new AddOperation());
-            case "-" -> calculator.setOperation(new SubtractOperation());
-            case "*" -> calculator.setOperation(new MultiplyOperation());
-            case "/" -> calculator.setOperation(new DivideOperation());
-            default -> System.out.println("잘못된 연산입니다.");
+        while (!calculatedEnded) {
+            try {
+                calculatedEnded = CalculatorApp.start();
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
         }
-
-        double result = calculator.calculate(firstNumber, secondNumber);
-        System.out.println(result);
     }
 }

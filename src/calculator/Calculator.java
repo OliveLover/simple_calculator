@@ -1,17 +1,25 @@
 package calculator;
 
 public class Calculator {
+    private int firstNumber;
+    private int secondNumber;
     private AbstractOperation operation;
-    public Calculator () {
-        System.out.println("계산기가 켜졌습니다.");
-        System.out.println("첫번째수, 연산자, 두번째수를 띄어쓰기로 구분하여 입력해주세요.");
-    }
 
     public void setOperation(AbstractOperation operation) {
         this.operation = operation;
     }
 
-    public double calculate(int firstNumber, int secondNumber) {
-        return operation.operate(firstNumber, secondNumber);
+    public void setFirstNumber (int firstNumber) {
+        this.firstNumber = firstNumber;
+    }
+
+    public void setSecondNumber (int secondNumber) {
+        this.secondNumber = secondNumber;
+    }
+
+    public double calculate() {
+        double answer = 0;
+        answer = operation.operate(firstNumber, secondNumber);
+        return answer;
     }
 }
